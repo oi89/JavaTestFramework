@@ -1,6 +1,8 @@
 package utils;
 
 import com.codeborne.selenide.Browsers;
+import config.ResourcesConfig;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -12,9 +14,10 @@ public class Driver {
     public static WebDriver getDriver(String browserName) {
         URL url;
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        ResourcesConfig resourcesConfig = ConfigFactory.create(ResourcesConfig.class);
 
         try {
-            url = new URL("http://localhost:4444/wd/hub/");
+            url = new URL(resourcesConfig.selenoidUrl());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

@@ -2,8 +2,6 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import config.Config;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.EventsPage;
 import pages.MainPage;
@@ -22,10 +20,11 @@ public class PastEventsCardsTest extends BaseHooks {
                 .clickEventsLink();
         eventsPage.clickPastEventsLink();
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        softAssertions.assertThat(eventsPage.getCardsLanguageCheckResult()).isEqualTo("OK");
+        softAssertions.assertThat(eventsPage.getCardsTitleCheckResult()).isEqualTo("OK");
+        softAssertions.assertThat(eventsPage.getCardsDateCheckResult()).isEqualTo("OK");
+        softAssertions.assertThat(eventsPage.getCardsRegistrationCheckResult("Registration closed")).isEqualTo("OK");
+        softAssertions.assertThat(eventsPage.getCardsSpeakersCheckResult()).isEqualTo("OK");
+        softAssertions.assertAll();
     }
 }

@@ -3,6 +3,7 @@ package config;
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +13,7 @@ import utils.Driver;
 public class Config {
     private static String browserName;
     private static Logger logger = LogManager.getLogger(Config.class);
+    static ResourcesConfig resourcesConfig = ConfigFactory.create(ResourcesConfig.class);
 
     public static void init() {
         try {
@@ -22,29 +24,26 @@ public class Config {
         }
         logger.info("BROWSER = " + browserName);
 
-        WebDriver driver = Driver.getDriver(browserName);
-        WebDriverRunner.setWebDriver(driver);
-        driver.manage().window().maximize();
+//        WebDriver driver = Driver.getDriver(browserName);
+//        WebDriverRunner.setWebDriver(driver);
+//        driver.manage().window().maximize();
 
-        // Еще можно запускаться через -Dremote=<адрес грида>
 
-//        if (browserName.equals(BrowserType.CHROME.getValue())) {
-//            Configuration.browser = Browsers.CHROME;
-//            Configuration.browserVersion = "90.0";
-//        } else if (browserName.equals(BrowserType.FIREFOX.getValue())) {
-//            Configuration.browser = Browsers.FIREFOX;
-//            Configuration.browserVersion = "88.0";
-//            logger.info("ВЕТКА FIREFOX");
-//        }
+        if (browserName.equals(Browsers.CHROME)) {
+            Configuration.browser = Browsers.CHROME;
+            Configuration.browserVersion = "90.0";
+        } else if (browserName.equals(Browsers.FIREFOX)) {
+            Configuration.browser = Browsers.FIREFOX;
+            Configuration.browserVersion = "88.0";
+        }
 
-//        Configuration.startMaximized = true;
-
-        Configuration.baseUrl = "https://events.epam.com/";
 //        Configuration.remote = "http://localhost:4444/wd/hub/";
 //        Configuration.browserCapabilities = new DesiredCapabilities();
 //        Configuration.browserCapabilities.setCapability("enableVNC", true);
 //        Configuration.holdBrowserOpen = true;
 
+        Configuration.startMaximized = true;
 
+        Configuration.baseUrl = resourcesConfig.baseUrl();
     }
 }
