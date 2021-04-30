@@ -20,11 +20,13 @@ public class PastEventsCardsTest extends BaseHooks {
                 .clickEventsLink();
         eventsPage.clickPastEventsLink();
 
-        softAssertions.assertThat(eventsPage.getCardsLanguageCheckResult()).isEqualTo("OK");
-        softAssertions.assertThat(eventsPage.getCardsTitleCheckResult()).isEqualTo("OK");
-        softAssertions.assertThat(eventsPage.getCardsDateCheckResult()).isEqualTo("OK");
-        softAssertions.assertThat(eventsPage.getCardsRegistrationCheckResult("Registration closed")).isEqualTo("OK");
-        softAssertions.assertThat(eventsPage.getCardsSpeakersCheckResult()).isEqualTo("OK");
+        for (int i = 0; i < eventsPage.getEventsCardsCount(); i++) {
+            softAssertions.assertThat(eventsPage.getCardLanguageByNumber(i)).isNotEmpty();
+            softAssertions.assertThat(eventsPage.getCardTitleByNumber(i)).isNotEmpty();
+            softAssertions.assertThat(eventsPage.getCardDateByNumber(i)).isNotEmpty();
+            softAssertions.assertThat(eventsPage.getCardRegistrationByNumber(i)).isEqualTo("Registration closed");
+            softAssertions.assertThat(eventsPage.getCardSpeakersCountByNumber(i)).isNotEqualTo(0);
+        }
         softAssertions.assertAll();
     }
 }

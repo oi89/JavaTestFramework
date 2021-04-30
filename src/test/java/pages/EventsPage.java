@@ -34,81 +34,25 @@ public class EventsPage extends BasePage {
         return upcomingEventsCount.getText();
     }
 
-    public String getCardsLanguageCheckResult() {
-        String result = "OK";
-
-        int i = 1;
-        for (SelenideElement cardLang : eventCardsLanguage) {
-            if (cardLang.getText().isEmpty()) {
-                result = String.format("Не указан язык в карточке мероприятия №%d", i);
-                break;
-            }
-            i++;
-        }
-
-        return result;
+    public String getCardLanguageByNumber(int index) {
+        return eventCardsLanguage.get(index).getText();
     }
 
-    public String getCardsTitleCheckResult() {
-        String result = "OK";
-
-        int i = 1;
-        for (SelenideElement cardTitle : eventCardsTitle) {
-            if (cardTitle.getText().isEmpty()) {
-                result = String.format("Не указан заголовок в карточке мероприятия №%d", i);
-                break;
-            }
-            i++;
-        }
-
-        return result;
+    public String getCardTitleByNumber(int index) {
+        return eventCardsTitle.get(index).getText();
     }
 
-    public String getCardsDateCheckResult() {
-        String result = "OK";
-
-        int i = 1;
-        for (SelenideElement cardDate : eventCardsDate) {
-            if (cardDate.getText().isEmpty()) {
-                result = String.format("Не указана дата в карточке мероприятия №%d", i);
-                break;
-            }
-            i++;
-        }
-
-        return result;
+    public String getCardDateByNumber(int index) {
+//        logger.info(index + " : " + eventCardsDate.get(index).getText());
+        return eventCardsDate.get(index).getText();
     }
 
-    public String getCardsRegistrationCheckResult(String expectedStatus) {
-        String result = "OK";
-
-        int i = 1;
-        for (SelenideElement cardRegistration : eventCardsRegistration) {
-            if (!expectedStatus.equals(cardRegistration.getText())) {
-                result = String.format("Статус регистрации не равен '%s' в карточке мероприятия №%d", expectedStatus, i);
-                break;
-            }
-            i++;
-        }
-
-        return result;
+    public String getCardRegistrationByNumber(int index) {
+        return eventCardsRegistration.get(index).getText();
     }
 
-    public String getCardsSpeakersCheckResult() {
-        String result = "OK";
-        ElementsCollection speakers;
-
-        int i = 1;
-        for (SelenideElement eventCard : eventsCards) {
-            speakers = eventCard.$$(eventCardsSpeakersLocator);
-            if (speakers.isEmpty()) {
-                result = String.format("Не указаны спикеры в карточке мероприятия №%d", i);
-                break;
-            }
-            i++;
-        }
-
-        return result;
+    public int getCardSpeakersCountByNumber(int index) {
+        return eventsCards.get(index).$$(eventCardsSpeakersLocator).size();
     }
 
     public EventsPage waitForLoading() {
