@@ -8,11 +8,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.EventsPage;
 import pages.MainPage;
+import pages.TalksLibraryPage;
 
 public class BaseHooks {
     protected SoftAssertions softAssertions;
     protected MainPage mainPage;
     protected EventsPage eventsPage;
+    protected TalksLibraryPage talksLibraryPage;
 
     @BeforeEach
     public void beforeTest() {
@@ -22,6 +24,7 @@ public class BaseHooks {
         softAssertions = new SoftAssertions();
         mainPage = new MainPage();
         eventsPage = new EventsPage();
+        talksLibraryPage = new TalksLibraryPage();
     }
 
     @BeforeAll

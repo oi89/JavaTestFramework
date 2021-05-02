@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import utils.Helpers;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,7 +26,7 @@ public class EventsPage extends BasePage {
         pastEventLink.click();
         logger.info("Выбран раздел 'Past Events' в разделе событий");
 
-        waitForLoading();
+        Helpers.waitForLoading();
 
         return this;
     }
@@ -43,7 +44,7 @@ public class EventsPage extends BasePage {
                 .click();
         logger.info("Выбрано значение 'Canada' в выпадающем списке");
 
-        waitForLoading();
+        Helpers.waitForLoading();
 
         return this;
     }
@@ -83,13 +84,5 @@ public class EventsPage extends BasePage {
 
     public String getFilterTagTextByNumber(int index) {
         return filterTags.get(index).getText();
-    }
-
-    public EventsPage waitForLoading() {
-        eventsLoader
-                .shouldBe(Condition.appear)
-                .shouldBe(Condition.disappear);
-
-        return this;
     }
 }

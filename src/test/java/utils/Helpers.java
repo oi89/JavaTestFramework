@@ -1,5 +1,7 @@
 package utils;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pages.EventsPage;
@@ -9,8 +11,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.codeborne.selenide.Selenide.$;
+
 public class Helpers {
     static Logger logger = LogManager.getLogger(Helpers.class);
+    private static final SelenideElement loader = $("div.evnt-global-loader");
 
     public static Date getDateFromString(String dateString) {
         Date date = null;
@@ -26,5 +31,11 @@ public class Helpers {
         }
 
         return date;
+    }
+
+    public static void waitForLoading() {
+        loader
+                .shouldBe(Condition.appear)
+                .shouldBe(Condition.disappear);
     }
 }
