@@ -1,24 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pages.EventsPage;
-import pages.MainPage;
 import utils.BaseHooks;
 import utils.Helpers;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class UpcomingEventsTest extends BaseHooks {
-    Logger logger = LogManager.getLogger(UpcomingEventsTest.class);
-
     @Test
     public void checkUpcomingEventsCountTest() {
         mainPage

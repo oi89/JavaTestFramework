@@ -2,8 +2,6 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import utils.Helpers;
-
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage extends BasePage {
@@ -24,16 +22,12 @@ public class MainPage extends BasePage {
         eventsLink.click();
         logger.info("Нажата ссылка 'Events' в верхнем меню");
 
-//        Helpers.waitForLoading();
-
         return this;
     }
 
     public MainPage clickVideoLink() {
         videoLink.click();
         logger.info("Нажата ссылка 'Video' в верхнем меню");
-
-//        Helpers.waitForLoading();
 
         return this;
     }

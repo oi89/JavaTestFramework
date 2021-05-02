@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class EventsPage extends BasePage {
     private final SelenideElement pastEventLink = $x("//span[contains(text(), 'Past')]/..");
-    private final SelenideElement eventsLoader = $("div.evnt-global-loader");
     private final ElementsCollection eventsCards = $$("div.evnt-event-card");
     private final SelenideElement upcomingEventsCount = $x("//span[contains(text(), 'Upcoming')]/following-sibling::span[contains(@class, 'evnt-tab-counter')]");
     private final SelenideElement pastEventsCount = $x("//span[contains(text(), 'Past')]/following-sibling::span[contains(@class, 'evnt-tab-counter')]");
@@ -70,7 +69,6 @@ public class EventsPage extends BasePage {
     }
 
     public String getCardDateByNumber(int index) {
-//        logger.info(index + " : " + eventCardsDate.get(index).getText());
         return eventCardsDate.get(index).getText();
     }
 

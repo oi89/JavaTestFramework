@@ -19,6 +19,8 @@ public class TalksLibraryPage extends BasePage {
     private final ElementsCollection filterTags = $$("div.evnt-filters-content div.evnt-tags-cell label");
     private final ElementsCollection eventsCards = $$("div.evnt-talk-card");
     private final ElementsCollection eventCardsLanguage = $$("div.evnt-talk-card p.language");
+    private final SelenideElement searchField = $("div.evnt-search-filter input.evnt-search");
+    private final ElementsCollection eventCardsTitle = $$("div.evnt-talk-name span");
 
     public TalksLibraryPage clickMoreFiltersLink() {
         moreFiltersLink.click();
@@ -77,6 +79,16 @@ public class TalksLibraryPage extends BasePage {
         return this;
     }
 
+    public TalksLibraryPage enterTextToSearchField(String text) {
+        searchField
+                .shouldBe(Condition.enabled)
+                .setValue(text);
+
+        Helpers.waitForLoading();
+
+        return this;
+    }
+
     public int getFilterTagsCountByText(String tagText) {
         return filterTags
                 .filter(Condition.text(tagText))
@@ -89,5 +101,9 @@ public class TalksLibraryPage extends BasePage {
 
     public String getCardLanguageByNumber(int index) {
         return eventCardsLanguage.get(index).getText();
+    }
+
+    public String getCardTitleByNumber(int index) {
+        return eventCardsTitle.get(index).getText();
     }
 }

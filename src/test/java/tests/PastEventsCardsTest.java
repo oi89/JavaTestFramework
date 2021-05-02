@@ -1,14 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pages.BasePage;
-import pages.EventsPage;
-import pages.MainPage;
 import utils.BaseHooks;
 import utils.Helpers;
 

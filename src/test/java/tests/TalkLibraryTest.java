@@ -31,4 +31,20 @@ public class TalkLibraryTest extends BaseHooks {
         }
         softAssertions.assertAll();
     }
+
+    @Test
+    public void searchVideosTest() {
+        String textForSearch = "QA";
+
+        mainPage
+                .acceptCookies()
+                .clickVideoLink();
+        talksLibraryPage.enterTextToSearchField(textForSearch);
+
+        for (int i = 0; i < talksLibraryPage.getEventsCardsCount(); i++) {
+            softAssertions.assertThat(talksLibraryPage.getCardTitleByNumber(i))
+                    .contains(textForSearch);
+        }
+        softAssertions.assertAll();
+    }
 }
