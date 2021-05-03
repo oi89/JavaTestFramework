@@ -34,8 +34,8 @@ public class UpcomingEventsTest extends BaseHooks {
                 .acceptCookies()
                 .clickEventsLink();
 
-        // если дата одна - она должна быть больше или рана текущей дате
-        // если указан диапазон дат - вторая дата должна быть меньше или равна текущей дате
+        // Eсли дата одна - она должна быть больше или рана текущей дате
+        // Eсли указан диапазон дат - вторая дата должна быть меньше или равна текущей дате
         for (int i = 0; i < eventsPage.getEventsCardsCount(); i++) {
             dateString = eventsPage.getCardDateByNumber(i);
             dateCard = Helpers.getDateFromString(dateString);

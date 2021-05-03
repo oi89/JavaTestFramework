@@ -1,8 +1,24 @@
-Проект содержит тесты для https://events.epam.com/
+Проект содержит тесты для сайта https://events.epam.com/
+
+Используемые инструменты:
+- сборщик проектов Maven
+- тестовый framework JUnit 5
+- логирование Log4j
+- параметризация свойств проекта с помощью библиотеки Owner
+- UI framework Selenide
+- удаленный запуск тестов через Selenide и Docker
+- отчеты Allure2
+- CI Jenkins
+
+Реализована возможность кроссбраузерного тестирования через аргумент командной строки:
+Пример: mvn clean test -Dbrowser=firefox
+Данная настройка вынесена в параметры job в Jenkins
+
+Запуск selenoid:
+cm.exe selenoid start --vnc --browsers "chrome;firefox" --last-versions 2 --args "-limit 4" --force
 
 Настроен автоматический запуск job в Jenkins:
 - по push новых изменений в git-репозиторий
-
 Для локального проксирования Jenkins и работы webHook используется:
 https://ngrok.com/
 
@@ -18,9 +34,3 @@ https://ngrok.com/
 - время выполнения job
 - количество тестов (всего / упавших / пропущенных / пройденных)
 - ссылку на job
-
-Запуск selenoid:
-cm.exe selenoid start --vnc --browsers "chrome;firefox" --last-versions 2 --args "-limit 4" --force
-
-Запуск тестов:
-mvn clean test -Dbrowser=firefox
