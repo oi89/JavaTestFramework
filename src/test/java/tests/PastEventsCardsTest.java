@@ -1,13 +1,18 @@
 package tests;
 
+import io.qameta.allure.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.BaseHooks;
 import utils.Helpers;
 
 import java.util.Date;
 
+@DisplayName("Тесты на раздел Past Events")
 public class PastEventsCardsTest extends BaseHooks {
     @Test
+    @DisplayName("Проверка параметров карточек раздела Past Events")
+    @Description("Тест проверяет параметры карточек событий раздела Past Events")
     public void checkPastEventsCardsTest() {
         mainPage
                 .acceptCookies()
@@ -25,6 +30,8 @@ public class PastEventsCardsTest extends BaseHooks {
     }
 
     @Test
+    @DisplayName("Проверка фильтрации событий раздела Past Events")
+    @Description("Тест фильтрует события по полю Location и проверяет их количество, дату и теги")
     public void checkEventsFilterByLocation() {
         String dateString;
         Date dateCard;

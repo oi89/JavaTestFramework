@@ -1,13 +1,18 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.BaseHooks;
 import utils.Helpers;
 import java.util.Date;
 
+@DisplayName("Тесты на раздел Upcoming Events")
 public class UpcomingEventsTest extends BaseHooks {
     @Test
+    @DisplayName("Проверка соотвествия количества карточек и их счетчика в разделе Upcoming Events")
+    @Description("Тест сравнивает количество карточек событий со счетчиком")
     public void checkUpcomingEventsCountTest() {
         mainPage
                 .acceptCookies()
@@ -18,6 +23,8 @@ public class UpcomingEventsTest extends BaseHooks {
     }
 
     @Test
+    @DisplayName("Проверка дат в карточках событий раздела Upcoming Events")
+    @Description("Тест сравнивает даты в карточках событий с текущей датой")
     public void checkUpcomingEventsDatesTest() {
         String dateString;
         Date dateCard;

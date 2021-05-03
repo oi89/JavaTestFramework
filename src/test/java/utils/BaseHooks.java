@@ -3,13 +3,16 @@ package utils;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import config.Config;
+import io.qameta.allure.Step;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pages.EventsPage;
 import pages.MainPage;
 import pages.TalksLibraryPage;
 
+@ExtendWith(TestExecutionWatcher.class)
 public class BaseHooks {
     protected SoftAssertions softAssertions;
     protected MainPage mainPage;
@@ -17,6 +20,7 @@ public class BaseHooks {
     protected TalksLibraryPage talksLibraryPage;
 
     @BeforeEach
+    @Step("Открытие главной страницы events.epam.com")
     public void beforeTest() {
         Selenide.clearBrowserCookies();
         Selenide.open(Configuration.baseUrl);

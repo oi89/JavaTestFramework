@@ -2,7 +2,10 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import utils.Helpers;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -22,69 +25,96 @@ public class TalksLibraryPage extends BasePage {
     private final SelenideElement searchField = $("div.evnt-search-filter input.evnt-search");
     private final ElementsCollection eventCardsTitle = $$("div.evnt-talk-name span");
 
+    @Step("Клик на ссылку More Filters")
     public TalksLibraryPage clickMoreFiltersLink() {
         moreFiltersLink.click();
+        Helpers.takeScreenshot();
         logger.info("Клик на ссылке 'More Filters'");
 
         return this;
     }
 
+    @Step("Клик в фильтр Category")
     public TalksLibraryPage clickCategoryFilter() {
         categoryFilter.click();
+        Helpers.takeScreenshot();
         logger.info("Клик в фильтре 'Category'");
 
         return this;
     }
 
+    @Step("Выбор значения Testing в фильтре Category")
     public TalksLibraryPage selectCategoryTesting() {
         categoryTesting
                 .shouldBe(Condition.visible)
                 .click();
+
+        Helpers.takeScreenshot();
         logger.info("Выбрано значение 'Testing' в выпадающем списке");
+
+        Selenide.actions().sendKeys(Keys.ESCAPE).perform();
 
         return this;
     }
 
+    @Step("Клик в фильтр Location")
     public TalksLibraryPage clickLocationFilter() {
         locationFilter.click();
+        Helpers.takeScreenshot();
         logger.info("Клик в фильтре 'Location'");
 
         return this;
     }
 
+    @Step("Выбор значения Belarus в фильтре Location")
     public TalksLibraryPage selectLocationBelarus() {
         locationBelarus
                 .shouldBe(Condition.visible)
                 .click();
+
+        Helpers.takeScreenshot();
         logger.info("Выбрано значение 'Belarus' в выпадающем списке");
+
+        Selenide.actions().sendKeys(Keys.ESCAPE).perform();
 
         return this;
     }
 
+    @Step("Клик в фильтр Language")
     public TalksLibraryPage clickLanguageFilter() {
         languageFilter.click();
+        Helpers.takeScreenshot();
         logger.info("Клик в фильтре 'Language'");
 
         return this;
     }
 
+    @Step("Выбор значения English в фильтре Language")
     public TalksLibraryPage selectLanguageEnglish() {
         languageEnglish
                 .shouldBe(Condition.visible)
                 .click();
-        logger.info("Выбрано значение 'English' в выпадающем списке");
 
         Helpers.waitForLoading();
+
+        Helpers.takeScreenshot();
+        logger.info("Выбрано значение 'English' в выпадающем списке");
+
+        Selenide.actions().sendKeys(Keys.ESCAPE).perform();
 
         return this;
     }
 
+    @Step("Ввод значения '{text}' в строку для поиска")
     public TalksLibraryPage enterTextToSearchField(String text) {
         searchField
                 .shouldBe(Condition.enabled)
                 .setValue(text);
 
         Helpers.waitForLoading();
+
+        Helpers.takeScreenshot();
+        logger.info(String.format("Введено значение '%s' в строку для поиск", text));
 
         return this;
     }

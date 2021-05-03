@@ -2,7 +2,10 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import utils.Helpers;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -21,29 +24,38 @@ public class EventsPage extends BasePage {
     private final SelenideElement locationCanada = $("label[data-value='Canada']");
     private final ElementsCollection filterTags = $$("div.evnt-filters-content div.evnt-tags-cell label");
 
+    @Step("Открытие раздела Past Events")
     public EventsPage clickPastEventsLink() {
         pastEventLink.click();
-        logger.info("Выбран раздел 'Past Events' в разделе событий");
-
         Helpers.waitForLoading();
+
+        Helpers.takeScreenshot();
+        logger.info("Выбран раздел 'Past Events' в разделе событий");
 
         return this;
     }
 
+    @Step("Клик в фильтр Location")
     public EventsPage clickLocationFilter() {
         locationFilter.click();
+        Helpers.takeScreenshot();
         logger.info("Клик в фильтре 'Location'");
 
         return this;
     }
 
+    @Step("Выбор значения Canada в фильтре Location")
     public EventsPage selectLocationCanada() {
         locationCanada
                 .shouldBe(Condition.visible)
                 .click();
-        logger.info("Выбрано значение 'Canada' в выпадающем списке");
 
         Helpers.waitForLoading();
+
+        Helpers.takeScreenshot();
+        logger.info("Выбрано значение 'Canada' в выпадающем списке");
+
+        Selenide.actions().sendKeys(Keys.ESCAPE).perform();
 
         return this;
     }
