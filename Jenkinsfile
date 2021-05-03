@@ -8,6 +8,7 @@ pipeline {
     parameters {
             string(name: 'GIT_URL', defaultValue: 'https://github.com/oi89/JavaTestFramework.git', description: 'The target git url')
             string(name: 'GIT_BRANCH', defaultValue: 'master', description: 'The target git branch')
+            choice(name: 'BROWSER_NAME', choices: ['chrome', 'firefox'], description: 'Pick the target browser in Selenoid')
     }
 
     stages {
@@ -21,7 +22,7 @@ pipeline {
         }
         stage('Run maven clean test') {
             steps {
-                bat 'mvn clean test -Dbrowser=firefox'
+                bat 'mvn clean test -Dbrowser=$BROWSER_NAME'
             }
         }
         stage('Backup and Reports') {
