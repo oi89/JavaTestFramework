@@ -24,25 +24,25 @@ public class Config {
         }
         logger.info("BROWSER = " + browserName);
 
-//        WebDriver driver = Driver.getDriver(browserName);
-//        WebDriverRunner.setWebDriver(driver);
-//        driver.manage().window().maximize();
+        WebDriver driver = Driver.getDriver(browserName);
+        WebDriverRunner.setWebDriver(driver);
+        driver.manage().window().maximize();
 
 
-        if (browserName.equals(Browsers.CHROME)) {
-            Configuration.browser = Browsers.CHROME;
-            Configuration.browserVersion = "90.0";
-        } else if (browserName.equals(Browsers.FIREFOX)) {
-            Configuration.browser = Browsers.FIREFOX;
-            Configuration.browserVersion = "88.0";
-        }
+//        if (browserName.equals(Browsers.CHROME)) {
+//            Configuration.browser = Browsers.CHROME;
+//            Configuration.browserVersion = "90.0";
+//        } else if (browserName.equals(Browsers.FIREFOX)) {
+//            Configuration.browser = Browsers.FIREFOX;
+//            Configuration.browserVersion = "88.0";
+//        }
 
 //        Configuration.remote = "http://localhost:4444/wd/hub/";
 //        Configuration.browserCapabilities = new DesiredCapabilities();
 //        Configuration.browserCapabilities.setCapability("enableVNC", true);
 //        Configuration.holdBrowserOpen = true;
 
-        Configuration.startMaximized = true;
+//        Configuration.startMaximized = true;
 
         Configuration.baseUrl = resourcesConfig.baseUrl();
     }
