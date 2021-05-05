@@ -6,7 +6,7 @@
 - логирование Log4j
 - параметризация свойств проекта с помощью библиотеки Owner
 - UI framework Selenide
-- удаленный запуск тестов через Selenide и Docker
+- удаленный запуск тестов через Selenoid и Docker
 - отчеты Allure2
 - CI Jenkins
 
