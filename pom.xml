@@ -85,7 +85,7 @@
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
                     <parallel>all</parallel>
-                    <threadCount>10</threadCount>
+                    <threadCount>4</threadCount>
                     <properties>
                         <configurationParameters>
                             junit.jupiter.execution.parallel.enabled = true

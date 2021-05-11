@@ -26,7 +26,10 @@ public class MainPage extends BasePage {
 
     @Step("Клик на меню Events")
     public MainPage clickEventsLink() {
-        eventsLink.click();
+        eventsLink
+                .shouldBe(Condition.visible)
+                .click();
+
         Helpers.takeScreenshot();
         logger.info("Нажата ссылка 'Events' в верхнем меню");
 
@@ -35,7 +38,10 @@ public class MainPage extends BasePage {
 
     @Step("Клик на меню Video")
     public MainPage clickVideoLink() {
-        videoLink.click();
+        videoLink
+                .shouldBe(Condition.visible)
+                .click();
+
         Helpers.takeScreenshot();
         logger.info("Нажата ссылка 'Video' в верхнем меню");
 
